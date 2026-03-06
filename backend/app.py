@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import os
 import pandas as pd
 from logic_engine import evaluate_soil
 from ai_explainer import generate_explanation
@@ -105,5 +106,8 @@ def analyze():
     except Exception as e:
         return f"Error processing request: {str(e)}", 500
 
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
