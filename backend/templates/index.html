@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AgriPulse - Precision Agriculture</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 420px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+        }
+
+        input[type=file] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #2E7D32;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1B5E20;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #555;
+            background: #F1F8E9;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 13px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>🌱 AgriPulse</h1>
+
+            <p class="subtitle">
+                AI Powered Soil Nutrient Analyzer for Smart Farming
+            </p>
+
+            <form action="/analyze" method="post" enctype="multipart/form-data">
+
+                <label>Upload Soil Data (CSV)</label>
+
+                <input type="file" name="file" required>
+
+                <label>Select Target Crop</label>
+
+                <select name="crop">
+
+                    <option value="TOMATO">🍅 Tomato</option>
+
+                    <option value="WHEAT">🌾 Wheat</option>
+
+                    <option value="RICE">🍚 Rice</option>
+
+                    <option value="MAIZE">🌽 Maize</option>
+
+                </select>
+
+                <button type="submit">Analyze Soil Health</button>
+
+            </form>
+
+
+            <div class="instructions">
+
+                <b>CSV Format Required</b><br><br>
+
+                soil_id,nitrogen,phosphorus,potassium,ph_level<br>
+
+                Example:<br>
+
+                SOIL_001,25,20,180,6.5
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        Built for HackArena | Precision Agriculture AI
+
+    </footer>
+
+</body>
+
+</html>

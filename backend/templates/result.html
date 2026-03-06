@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AgriPulse Results</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #F4F7F6;
+        }
+
+        .header {
+            background: #2E7D32;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        .score {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .optimal {
+            color: green;
+            font-weight: bold;
+        }
+
+        .deficient {
+            color: #E65100;
+            font-weight: bold;
+        }
+
+        .critical {
+            color: red;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-top: 10px;
+        }
+
+        .ai-box {
+            background: #E8F5E9;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #2E7D32;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1B5E20;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="header">
+
+        <h1>🌱 AgriPulse Soil Analysis Dashboard</h1>
+        <p>AI Powered Precision Agriculture</p>
+
+    </div>
+
+
+    <div class="container">
+
+        {% for r in results %}
+
+        <div class="card">
+
+            <h3>Soil Sample: {{r.soil_id}}</h3>
+
+            <div class="section">
+
+                <b>Target Crop:</b> {{r.target_crop}}
+
+            </div>
+
+            <div class="section score">
+
+                Suitability Score: {{r.recommendation.suitability_score}}%
+
+            </div>
+
+            <div class="section">
+
+                <b>Soil Health Status:</b>
+
+                {% if r.health_metrics.overall_health == "Optimal" %}
+                <span class="optimal">Optimal</span>
+                {% elif r.health_metrics.overall_health == "Deficient" %}
+                <span class="deficient">Deficient</span>
+                {% else %}
+                <span class="critical">Critical</span>
+                {% endif %}
+
+            </div>
+
+            <div class="section">
+
+                <b>Critical Deficiencies:</b>
+
+                {% if r.health_metrics.critical_deficiencies %}
+                {{ r.health_metrics.critical_deficiencies }}
+                {% else %}
+                None
+                {% endif %}
+
+            </div>
+
+            <div class="section">
+
+                <b>Fertilizer Recommendation:</b>
+
+                <p>{{r.recommendation.fertilizer_plan}}</p>
+
+            </div>
+
+            <div class="section ai-box">
+
+                <b>AI Explanation</b>
+
+                <p>{{r.ai_explanation}}</p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+
+        <div class="center">
+
+            <a href="/">
+                <button>Analyze Another Soil Sample</button>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        AgriPulse Hackathon Project | Smart Farming with AI
+
+    </footer>
+
+
+</body>
+
+</html>
